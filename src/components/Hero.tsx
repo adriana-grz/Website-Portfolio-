@@ -77,7 +77,7 @@ export default function Hero() {
           <div className="flex items-center gap-8 mt-2 relative z-30 pointer-events-auto">
           {[
           { name: 'Github', icon: 'line-md:github-loop', url: 'https://github.com/adriana-grz' },
-          { name: 'LinkedIn', icon: 'line-md:linkedin', url: '#' },
+          { name: 'LinkedIn', icon: 'line-md:linkedin', url: 'https://www.linkedin.com/in/adriana-gutierrez-581a633a2/' },
           { name: 'Discord', icon: 'line-md:discord', url: '#' }
     ].map((link) => (
     <a
