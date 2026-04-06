@@ -13,9 +13,21 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
   const scrollToSection = (tab: Tab) => {
     setActiveTab(tab);
-    const element = document.getElementById(tab.toLowerCase());
+    
+    // Convert Tab name to ID (e.g., "Contact Me" -> "contact me")
+    const id = tab.toLowerCase();
+    const element = document.getElementById(id);
+    
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const offset = 100; // Change this number to adjust the gap
+      
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
 

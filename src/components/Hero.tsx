@@ -1,5 +1,6 @@
 'use client';
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useSpring, Variants } from 'framer-motion';
+import { Icon } from '@iconify/react';
 
 export default function Hero() {
   // Mouse tracking for parallax
@@ -19,12 +20,12 @@ export default function Hero() {
   const x = useSpring(useTransform(mouseX, [-0.5, 0.5], [15, -15]), springConfig);
   const y = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), springConfig);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { x: -30, opacity: 0 },
     visible: {
       x: 0,
@@ -39,19 +40,19 @@ export default function Hero() {
       className="relative h-full w-full flex items-center overflow-hidden"
     >
       <motion.div 
-        style={{ x, y }} // The Parallax effect
+        style={{ x, y }} 
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="container mx-auto px-12 md:px-24 z-20"
       >
         {/* Status Tag */}
-        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-6">
+        <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-1">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-white-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-300"></span>
           </span>
-          <span className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] uppercase tracking-[0.2em] font-bold text-white-400">
+          <span className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-[10px] uppercase tracking-[0.2em] font-bold text-white-100">
             Open for Collaboration
           </span>
         </motion.div>
@@ -68,17 +69,36 @@ export default function Hero() {
         </motion.h1>
 
         <motion.div variants={itemVariants} className="flex flex-col gap-4">
-          <p className="max-w-md text-lg md:text-xl text-white/50 leading-relaxed font-normal">
-            I bridge the gap between <span className="text-white">design & logic</span> by building intuitive interfaces and robust, full-stack web architectures.
+          <p className="max-w-xl text-lg md:text-xl text-white/40 leading-relaxed font-normal">
+            I focus on creating <span className="text-white/80">web experiences</span> that actually make sense.
           </p>
           
-          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-2">
-            {['React', 'HTML', 'CSS', 'Javascript','Typescript'].map((skill) => (
-              <span key={skill} className="text-[11px] font-mono uppercase tracking-widest text-white/30">
-                 {skill}
-              </span>
-            ))}
-          </div>
+          {/* Social Links */}
+          <div className="flex items-center gap-8 mt-2 relative z-30 pointer-events-auto">
+          {[
+          { name: 'Github', icon: 'line-md:github-loop', url: 'https://github.com/adriana-grz' },
+          { name: 'LinkedIn', icon: 'line-md:linkedin', url: '#' },
+          { name: 'Discord', icon: 'line-md:discord', url: '#' }
+    ].map((link) => (
+    <a
+      key={link.name}
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative flex items-center gap-2.5 cursor-pointer"
+      >
+      <Icon 
+        icon={link.icon} 
+        className="text-xl text-white/20 group-hover:text-white transition-all duration-300" 
+      />
+      <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/20 group-hover:text-white/70 transition-all duration-300">
+        {link.name}
+      </span>
+      {/* Hover Underline */}
+      <span className="absolute -bottom-1.5 left-0 w-0 h-[1px] bg-gradient-to-r from-purple-400 to-indigo-500 transition-all duration-500 group-hover:w-full" />
+    </a>
+    ))}
+    </div>
         </motion.div>
 
         {/* Action Buttons */}

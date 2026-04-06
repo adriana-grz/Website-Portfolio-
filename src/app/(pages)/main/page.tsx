@@ -4,7 +4,8 @@ import dynamic from 'next/dynamic';
 import DarkVeil from '@/components/DarkVeil';
 import Header, { Tab, tabs } from '@/components/Header';
 import Hero from '@/components/Hero';
-import Education from '@/components/Education';
+import Skills from '@/components/Skills';
+import AboutMe from '@/components/AboutMe'; // Added this import
 
 const Lanyard = dynamic(() => import('@/components/Lanyard'), { ssr: false });
 
@@ -25,7 +26,7 @@ const MainPage: React.FC = () => {
           const currentTab = tabs.find(
             (tab) => tab.toLowerCase() === entry.target.id
           );
-          if (currentTab) setActiveTab(currentTab);
+          if (currentTab) setActiveTab(currentTab as Tab);
         }
       });
     };
@@ -62,16 +63,24 @@ const MainPage: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 2: Education */}
+
+    <br></br>
+      {/* SECTION 2: Skills */}
       <section id="skills" className="relative z-20 min-h-screen">
-        {/*<Education />*/}
+        <Skills />
       </section>
 
       <section id="projects" className="relative z-20 min-h-screen">
         {/* <Projects /> */}
       </section>
 
+      {/* BIO SECTION */}
+      <section className="relative z-20">
+        
+      </section>
+
       <section id="contact me" className="relative z-20 min-h-screen">
+        <AboutMe />
         {/* <Contact /> */}
       </section>
 
