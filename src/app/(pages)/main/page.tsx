@@ -6,7 +6,8 @@ import Header, { Tab, tabs } from '@/components/Header';
 import Hero from '@/components/Hero';
 import Skills from '@/components/Skills';
 import AboutMe from '@/components/AboutMe'; // Added this import
-
+import Projects from '@/components/Projects'; // Added this import
+import Contacts from '@/components/Contacts'; // Added this import
 const Lanyard = dynamic(() => import('@/components/Lanyard'), { ssr: false });
 
 const MainPage: React.FC = () => {
@@ -71,7 +72,7 @@ const MainPage: React.FC = () => {
       </section>
 
       <section id="projects" className="relative z-20 min-h-screen">
-        {/* <Projects /> */}
+         <Projects />
       </section>
 
       {/* BIO SECTION */}
@@ -79,9 +80,8 @@ const MainPage: React.FC = () => {
         
       </section>
 
-      <section id="contact me" className="relative z-20 min-h-screen">
-        <AboutMe />
-        {/* <Contact /> */}
+      <section id="contacts" className="relative z-20 min-h-screen">
+         <Contacts />
       </section>
 
     </main>

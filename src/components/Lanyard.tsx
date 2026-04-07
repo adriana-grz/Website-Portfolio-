@@ -211,7 +211,7 @@ card.current.setAngvel({ x: ang.x, y: ang.y - (rot.y - 0) * 0.25, z: ang.z });  
       <mesh ref={band}>
         <meshLineGeometry />
         <meshLineMaterial
-          color="white"
+          color="black"
           depthTest={false}
           resolution={isMobile ? [1000, 2000] : [1000, 1000]}
           useMap

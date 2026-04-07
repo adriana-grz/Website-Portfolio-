@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export const tabs = ["About", "Skills", "Projects", "Contact Me"] as const;
+export const tabs = ["About", "Skills", "Projects", "Contacts"] as const;
 export type Tab = (typeof tabs)[number];
 
 interface HeaderProps {
@@ -14,7 +14,6 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
   const scrollToSection = (tab: Tab) => {
     setActiveTab(tab);
     
-    // Convert Tab name to ID (e.g., "Contact Me" -> "contact me")
     const id = tab.toLowerCase();
     const element = document.getElementById(id);
     
