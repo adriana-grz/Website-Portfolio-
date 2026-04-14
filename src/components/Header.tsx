@@ -18,13 +18,16 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
     const element = document.getElementById(id);
     
     if (element) {
-      const offset = 100; // Change this number to adjust the gap
+      // 1. Get the element's position relative to the document
+      const elementRect = element.getBoundingClientRect();
+      const absoluteElementTop = elementRect.top + window.pageYOffset;
       
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      // 2. Calculate the center position
+      // (Element Top) - (Half of Window Height) + (Half of Element Height)
+      const centerPosition = absoluteElementTop - (window.innerHeight / 2) + (elementRect.height / 2);
 
       window.scrollTo({
-        top: offsetPosition,
+        top: centerPosition,
         behavior: "smooth"
       });
     }

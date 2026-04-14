@@ -39,19 +39,10 @@ const skillCategories = [
 
 const workflowSteps = [
   {
-    title: "Agile / Scrum",
-    description: "Collaborative development focused on sprint-based tasks.",
-    icon: "teenyicons:users-outline",
-  },
-  {
-    title: "Legacy Modernization",
-    description: "Refactoring legacy code and upgrading dependencies.",
-    icon: "mdi:wrench-clock",
-  },
-  {
-    title: "Version Control",
-    description: "Disciplined GitHub use and clean commit histories.",
-    icon: "mdi:github",
+    title: "Xentra Info Tech Solutions, Inc.",
+    subtitle: "FrontEnd/Web Developer Intern 2026",
+    description: "Refactored and modernized a legacy front-end project by updating its codebase to current standards, improving structure, maintainability, and performance. Enhanced UI components, and applied development practices to ensure better scalability and user experience.",
+    icon: "mdi:office-building-community",
   }
 ];
 
@@ -72,11 +63,10 @@ const cardVariants: Variants = {
 };
 
 const Skills = () => {
-  // Adjust this value to change the left/right alignment and max width
-  const containerWidth = "max-w-6xl"; 
+  const containerWidth = "max-w-7xl"; 
 
   return (
-    <section id="skills" className="py-8 px-1 md:px-8 lg:pl-16 flex items-center justify-center bg-transparent">
+    <section id="skills" className="py-0 px-6 md:px-12 lg:px-20 flex items-center justify-center bg-transparent">
       <motion.div 
         className={`${containerWidth} mx-auto w-full`}
         initial="hidden"
@@ -86,48 +76,47 @@ const Skills = () => {
       >
         
         {/* --- HEADER --- */}
-        <div className="mb-10 space-y-1">
-          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tighter ">My Tech Stack.</h2>
+        <div className="mb-16 space-y-3">
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">Skills & Experience</h2>
+      
         </div>
         
         {/* --- TECH STACK GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
-          {skillCategories.map((category, catIndex) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {skillCategories.map((category) => (
             <motion.div 
               key={category.title} 
               variants={cardVariants}
               whileHover={{ 
-                y: -4,
+                y: -8,
                 transition: { duration: 0.2 }
               }}
-              className="relative p-6 rounded-2xl overflow-hidden group/card 
+              className="relative p-10 rounded-3xl overflow-hidden group/card 
                          bg-black/40 backdrop-blur-xl border border-white/10 
-                         hover:bg-black/60 hover:border-fuchsia-500/30 
-                         hover:shadow-[0_15px_40px_-15px_rgba(217,70,239,0.2)]
-                         transition-all duration-300 ease-out"
+                         hover:bg-black/60 hover:border-fuchsia-500/40 
+                         min-h-[340px] flex flex-col transition-all duration-300 ease-out"
             >
               <div className="absolute -inset-px bg-gradient-to-br from-fuchsia-600/10 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none" />
               
-              <div className="flex items-center gap-2 mb-8 relative z-10">
-                <div className="w-1 h-1 rounded-full bg-fuchsia-500 shadow-[0_0_8px_#d946ef]" />
-                <h3 className="font-mono text-[11px] tracking-[0.2em] text-gray-400 uppercase font-bold">
+              <div className="flex items-center gap-3 mb-10 relative z-10">
+                <div className="w-1.5 h-1.5 rounded-full bg-fuchsia-500 shadow-[0_0_10px_#d946ef]" />
+                <h3 className="font-mono text-xs tracking-[0.25em] text-gray-300 uppercase font-bold">
                   {category.title}
                 </h3>
               </div>
 
-              <div className="grid grid-cols-3 gap-y-7 gap-x-3 place-items-center relative z-10">
-                {category.skills.map((skill, index) => (
+              <div className="grid grid-cols-3 gap-y-10 gap-x-4 relative z-10 my-auto">
+                {category.skills.map((skill) => (
                   <div key={skill.name} className="group relative">
                     <motion.div 
-                      className="grayscale-[40%] opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
-                      whileHover={{ scale: 1.15 }}
+                      className="grayscale-[30%] opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
+                      whileHover={{ scale: 1.2 }}
                     >
-                      <Icon icon={skill.icon} className={`text-3xl ${skill.name === "GitHub" ? "text-white" : ""}`} />
+                      <Icon icon={skill.icon} className={`text-5xl ${skill.name === "GitHub" ? "text-white" : ""}`} />
                     </motion.div>
                     
-                    {/* Tooltip */}
-                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all duration-200 origin-bottom pointer-events-none z-50">
-                      <div className="bg-fuchsia-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow-lg whitespace-nowrap">
+                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all duration-200 origin-bottom pointer-events-none z-50">
+                      <div className="bg-fuchsia-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow-xl whitespace-nowrap">
                         {skill.name}
                       </div>
                     </div>
@@ -138,27 +127,25 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* --- WORKFLOW SECTION --- */}
+        {/* --- EXPERIENCE SECTION --- */}
         <div className="w-full relative z-10">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-[1px] w-8 bg-fuchsia-500/50" />
-            <span className="text-fuchsia-500 font-mono text-[9px] tracking-[0.3em] uppercase font-bold">Workflow</span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-8">
             {workflowSteps.map((step, index) => (
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className="relative p-5 rounded-xl bg-black/40 backdrop-blur-xl border border-white/5 hover:border-fuchsia-500/30 transition-all duration-300 group overflow-hidden"
+                className="relative p-8 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/5 
+                           hover:border-fuchsia-500/30 min-h-[200px] flex flex-col items-center justify-center text-center
+                           transition-all duration-300 group overflow-hidden"
               >
-                <div className="mb-3 text-fuchsia-500/80 group-hover:text-fuchsia-400 transition-colors duration-300">
-                  <Icon icon={step.icon} className="text-3xl" />
+                <div className="mb-6 text-fuchsia-500/80 group-hover:text-fuchsia-400 transition-colors duration-300">
+                  <Icon icon={step.icon} className="text-4xl" />
                 </div>
-                <h4 className="text-white font-bold text-lg mb-1 tracking-tight">{step.title}</h4>
-                <p className="text-gray-400 text-xs leading-relaxed">{step.description}</p>
+                <h4 className="text-white font-bold text-3xl mb-1 tracking-tight">{step.title}</h4>
+                <p className="text-fuchsia-500 font-mono text-[20px] mb-4 uppercase tracking-widest">{step.subtitle}</p>
+                <p className="text-gray-400 text-sm leading-relaxed max-w-4xl">{step.description}</p>
                 
-                <div className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-fuchsia-500 group-hover:w-full transition-all duration-500" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 bg-fuchsia-500 group-hover:w-full transition-all duration-500" />
               </motion.div>
             ))}
           </div>

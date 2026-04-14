@@ -42,7 +42,7 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
         
-        className="container mx-auto px-6 sm:px-12 lg:pl-40 xl:pl-56 z-20 max-w-7xl"
+        className="container mx-auto px-6 sm:px-12 pb-10 lg:pl-40 xl:pl-56 z-20 max-w-7xl"
       >
         {/* Status Tag */}
         <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-4">
@@ -58,7 +58,7 @@ export default function Hero() {
         {/* Scaled Title */}
         <motion.h1 
           variants={itemVariants}
-          className="text-6xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tighter leading-[0.9]"
+          className="text-6xl sm:text-9xl md:text-9xl lg:text-9xl font-bold text-white mb-6 tracking-tighter leading-[0.9]"
         >
           WEB <br /> 
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-500">

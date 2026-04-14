@@ -8,6 +8,7 @@ import Skills from '@/components/Skills';
 import AboutMe from '@/components/AboutMe';
 import Projects from '@/components/Projects';
 import Contacts from '@/components/Contacts';
+import Footer from '@/components/Footer'; // Import the new Footer
 
 const Lanyard = dynamic(() => import('@/components/Lanyard'), { ssr: false });
 
@@ -55,18 +56,12 @@ const MainPage: React.FC = () => {
       {/* SECTION 1: About / Hero */}
       <section 
         id="about" 
-        /* 
-           CHANGED: items-center -> items-start (lifts content to the top)
-           CHANGED: pt-20 -> pt-32 lg:pt-40 (adjusts how high it sits from the header)
-        */
         className="relative min-h-screen w-full flex flex-col lg:flex-row items-start justify-between pt-32 lg:pt-1"
       >
-        {/* Text content */}
         <div className="relative w-full lg:w-1/2 z-20">
           <Hero />
         </div>
         
-        {/* 3D Element Container */}
         <div className="relative w-full lg:w-1/2 h-[50vh] lg:h-screen z-30 pointer-events-none">
           <Suspense fallback={null}>
             <div className="w-full h-full flex items-center justify-center lg:justify-end">
@@ -96,6 +91,11 @@ const MainPage: React.FC = () => {
           <Contacts />
         </div>
       </section>
+
+      {/* FOOTER: Placed outside of sections but with relative z-index */}
+      <div className="relative z-20">
+        <Footer />
+      </div>
 
     </main>
   );
