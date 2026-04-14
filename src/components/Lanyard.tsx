@@ -151,7 +151,8 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
       
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());
-card.current.setAngvel({ x: ang.x, y: ang.y - (rot.y - 0) * 0.25, z: ang.z });    }
+      card.current.setAngvel({ x: ang.x, y: ang.y - (rot.y - 0) * 0.25, z: ang.z });
+    }
   });
 
   curve.curveType = 'chordal';
@@ -208,6 +209,7 @@ card.current.setAngvel({ x: ang.x, y: ang.y - (rot.y - 0) * 0.25, z: ang.z });  
         </RigidBody>
       </group>
       
+      {/* @ts-ignore - MeshLineGeometry and MeshLineMaterial are registered with extend() */}
       <mesh ref={band}>
         <meshLineGeometry />
         <meshLineMaterial
