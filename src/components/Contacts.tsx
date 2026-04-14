@@ -44,9 +44,9 @@ const Contacts: React.FC = () => {
               </a>
 
               <div className="flex items-center space-x-6 text-gray-500 font-bold uppercase tracking-widest text-[10px]">
-                <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-                <a href="#" className="hover:text-white transition-colors">GitHub</a>
-                <a href="#" className="hover:text-white transition-colors">Twitter</a>
+                <a href="https://www.linkedin.com/in/adriana-gutierrez-581a633a2/" className="hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://github.com/adriana-grz" className="hover:text-white transition-colors">GitHub</a>
+                <a href="https://www.facebook.com/adrngtrz#" className="hover:text-white transition-colors">Facebook</a>
               </div>
             </div>
           </div>

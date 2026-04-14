@@ -13,21 +13,21 @@ const projects: Project[] = [
     id: 1,
     title: "Make Cents",
     description: "A smart mobile budgeting application built with Flutter and Dart, featuring AI-driven expense tracking and financial insights.",
-    link: "https://github.com/yourusername/make-cents",
+    link: "https://github.com/neiljosephdelrosario/MakeCents",
     thumbnail: "/images/makecents-project.png" 
   },
   {
     id: 2,
     title: "Inventory Management System",
     description: "A streamlined web-based solution for tracking stock levels, managing suppliers, and generating real-time inventory reports.",
-    link: "https://github.com/yourusername/inventory-system",
+    link: "https://github.com/adriana-grz/Inventory-Management-System",
     thumbnail: "/images/inventory-system.png"
   },
   {
     id: 3,
     title: "Task Manager",
     description: "A productivity suite featuring categorized task lists, automated deadline alerts, an integrated Pomodoro timer, and a calendar view.",
-    link: "https://github.com/yourusername/task-manager",
+    link: "https://github.com/adriana-grz/Task-Managing-System",
     thumbnail: "/images/taskmanger.png"
   },
 ];

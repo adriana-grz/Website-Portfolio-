@@ -17,6 +17,15 @@ export default function Hero() {
   const x = useSpring(useTransform(mouseX, [-0.5, 0.5], [15, -15]), springConfig);
   const y = useSpring(useTransform(mouseY, [-0.5, 0.5], [15, -15]), springConfig);
 
+  // Helper for smooth scroll
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
@@ -41,7 +50,6 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        
         className="container mx-auto px-6 sm:px-12 pb-10 lg:pl-40 xl:pl-56 z-20 max-w-7xl"
       >
         {/* Status Tag */}
@@ -105,15 +113,23 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Action Buttons */}
+        {/* Action Buttons with Smooth Scroll */}
         <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mt-8 pointer-events-auto">
-          <button className="group relative px-6 py-3 rounded-full overflow-hidden transition-all bg-white hover:scale-105 active:scale-95">
+          <motion.a 
+            href="#projects"
+            onClick={(e) => handleScroll(e, 'projects')}
+            className="group relative px-6 py-3 rounded-full overflow-hidden transition-all bg-white hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer"
+          >
             <span className="relative text-black font-bold text-xs uppercase tracking-wider">Explore Projects</span>
-          </button>
+          </motion.a>
           
-          <button className="px-6 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-lg text-white font-bold text-xs uppercase tracking-wider hover:bg-white/10 transition-all hover:scale-105 active:scale-95">
+          <motion.a 
+            href="#contacts"
+            onClick={(e) => handleScroll(e, 'contacts')}
+            className="px-6 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-lg text-white font-bold text-xs uppercase tracking-wider hover:bg-white/10 transition-all hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer"
+          >
             Get in touch
-          </button>
+          </motion.a>
         </motion.div>
       </motion.div>
 
