@@ -5,9 +5,10 @@ import DarkVeil from '@/components/DarkVeil';
 import Header, { Tab, tabs } from '@/components/Header';
 import Hero from '@/components/Hero';
 import Skills from '@/components/Skills';
-import AboutMe from '@/components/AboutMe'; // Added this import
-import Projects from '@/components/Projects'; // Added this import
-import Contacts from '@/components/Contacts'; // Added this import
+import AboutMe from '@/components/AboutMe';
+import Projects from '@/components/Projects';
+import Contacts from '@/components/Contacts';
+
 const Lanyard = dynamic(() => import('@/components/Lanyard'), { ssr: false });
 
 const MainPage: React.FC = () => {
@@ -23,7 +24,6 @@ const MainPage: React.FC = () => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          
           const currentTab = tabs.find(
             (tab) => tab.toLowerCase() === entry.target.id
           );
@@ -43,45 +43,58 @@ const MainPage: React.FC = () => {
   }, []);
 
   return (
-    <main className="relative min-h-screen w-screen overflow-x-hidden overflow-y-auto bg-black text-white selection:bg-purple-500/30">
+    <main className="relative min-h-screen w-full overflow-x-hidden bg-black text-white selection:bg-purple-500/30">
       
+      {/* Background Layer */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <DarkVeil hueShift={285} speed={0.3} />
       </div>
 
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      {/* SECTION 1: About */}
-      <section id="about" className="relative h-screen w-full overflow-hidden">
-        <div className="absolute inset-0 z-10 pointer-events-none">
+      {/* SECTION 1: About / Hero */}
+      <section 
+        id="about" 
+        /* 
+           CHANGED: items-center -> items-start (lifts content to the top)
+           CHANGED: pt-20 -> pt-32 lg:pt-40 (adjusts how high it sits from the header)
+        */
+        className="relative min-h-screen w-full flex flex-col lg:flex-row items-start justify-between pt-32 lg:pt-1"
+      >
+        {/* Text content */}
+        <div className="relative w-full lg:w-1/2 z-20">
           <Hero />
         </div>
         
-        <div className="absolute inset-0 left-190 z-30 pointer-events-none">
+        {/* 3D Element Container */}
+        <div className="relative w-full lg:w-1/2 h-[50vh] lg:h-screen z-30 pointer-events-none">
           <Suspense fallback={null}>
-             <Lanyard position={[7, 0, 15]} gravity={[0, -40, 0]} />
+            <div className="w-full h-full flex items-center justify-center lg:justify-end">
+               <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]} />
+            </div>
           </Suspense>
         </div>
       </section>
 
-
-    <br></br>
       {/* SECTION 2: Skills */}
-      <section id="skills" className="relative z-20 min-h-screen">
-        <Skills />
+      <section id="skills" className="relative z-20 min-h-screen py-20">
+        <div className="container mx-auto px-6">
+          <Skills />
+        </div>
       </section>
 
-      <section id="projects" className="relative z-20 min-h-screen">
-         <Projects />
+      {/* SECTION 3: Projects */}
+      <section id="projects" className="relative z-20 min-h-screen py-20">
+        <div className="container mx-auto px-6">
+          <Projects />
+        </div>
       </section>
 
-      {/* BIO SECTION */}
-      <section className="relative z-20">
-        
-      </section>
-
-      <section id="contacts" className="relative z-20 min-h-screen">
-         <Contacts />
+      {/* SECTION 4: Contacts */}
+      <section id="contacts" className="relative z-20 min-h-screen py-1">
+        <div className="container mx-auto px-6">
+          <Contacts />
+        </div>
       </section>
 
     </main>

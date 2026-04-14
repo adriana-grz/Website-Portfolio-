@@ -2,7 +2,7 @@ import React from 'react';
 
 const Contacts: React.FC = () => {
   return (
-    <section id="contact" className="min-h-[70vh] text-white py-20 px-6 md:px-12 flex items-center">
+    <section id="contact" className="min-h-[70vh] text-white py-10 px-6 md:px-12 flex items-center">
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Side: Engaging Copy */}

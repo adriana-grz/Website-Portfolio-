@@ -40,17 +40,17 @@ const skillCategories = [
 const workflowSteps = [
   {
     title: "Agile / Scrum",
-    description: "Collaborative development focused on sprint-based task management.",
+    description: "Collaborative development focused on sprint-based tasks.",
     icon: "teenyicons:users-outline",
   },
   {
     title: "Legacy Modernization",
-    description: "Refactoring legacy code and upgrading dependencies to modern standards.",
+    description: "Refactoring legacy code and upgrading dependencies.",
     icon: "mdi:wrench-clock",
   },
   {
     title: "Version Control",
-    description: "Disciplined use of GitHub for branching and clean commit histories.",
+    description: "Disciplined GitHub use and clean commit histories.",
     icon: "mdi:github",
   }
 ];
@@ -59,23 +59,26 @@ const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { staggerChildren: 0.12 },
   },
 };
 
 const cardVariants: Variants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 15, opacity: 0 },
   visible: {
     y: 0, opacity: 1,
-    transition: { type: 'spring', stiffness: 100, damping: 15 },
+    transition: { type: 'spring', stiffness: 100, damping: 18 },
   },
 };
 
 const Skills = () => {
+  // Adjust this value to change the left/right alignment and max width
+  const containerWidth = "max-w-6xl"; 
+
   return (
-    <section id="skills" className="py-1 px-6 md:px-12 flex items-center justify-center bg-transparent">
+    <section id="skills" className="py-8 px-1 md:px-8 lg:pl-16 flex items-center justify-center bg-transparent">
       <motion.div 
-        className="max-w-7xl mx-auto w-full"
+        className={`${containerWidth} mx-auto w-full`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
@@ -83,43 +86,48 @@ const Skills = () => {
       >
         
         {/* --- HEADER --- */}
-        <div className="mb-16 space-y-2">
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">My Tech Stack.</h2>
+        <div className="mb-10 space-y-1">
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tighter ">My Tech Stack.</h2>
         </div>
         
         {/* --- TECH STACK GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
           {skillCategories.map((category, catIndex) => (
             <motion.div 
               key={category.title} 
               variants={cardVariants}
               whileHover={{ 
-                rotateX: 2, 
-                rotateY: -2,
-                transition: { duration: 0.3, ease: 'easeOut' }
+                y: -4,
+                transition: { duration: 0.2 }
               }}
-              className="relative p-8 rounded-3xl overflow-hidden group/card 
-                         bg-black/50 backdrop-blur-2xl border border-white/20 
-                         hover:bg-black/70 hover:border-fuchsia-500/40 
-                         hover:shadow-[0_20px_80px_-20px_rgba(217,70,239,0.25)]
-                         transition-all duration-500 ease-out"
+              className="relative p-6 rounded-2xl overflow-hidden group/card 
+                         bg-black/40 backdrop-blur-xl border border-white/10 
+                         hover:bg-black/60 hover:border-fuchsia-500/30 
+                         hover:shadow-[0_15px_40px_-15px_rgba(217,70,239,0.2)]
+                         transition-all duration-300 ease-out"
             >
-              <div className="absolute -inset-px bg-gradient-to-r from-fuchsia-600/15 to-purple-600/15 opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000 blur-2xl pointer-events-none" />
+              <div className="absolute -inset-px bg-gradient-to-br from-fuchsia-600/10 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none" />
               
-              <div className="flex items-center gap-3 mb-12 relative z-10">
-                <div className="w-1.5 h-1.5 rounded-full bg-fuchsia-500 shadow-[0_0_12px_#d946ef]" />
-                <h3 className="font-mono text-sm tracking-widest text-gray-100 uppercase font-semibold">
+              <div className="flex items-center gap-2 mb-8 relative z-10">
+                <div className="w-1 h-1 rounded-full bg-fuchsia-500 shadow-[0_0_8px_#d946ef]" />
+                <h3 className="font-mono text-[11px] tracking-[0.2em] text-gray-400 uppercase font-bold">
                   {category.title}
                 </h3>
               </div>
-              <div className="grid grid-cols-3 gap-y-10 gap-x-4 place-items-center relative z-10">
+
+              <div className="grid grid-cols-3 gap-y-7 gap-x-3 place-items-center relative z-10">
                 {category.skills.map((skill, index) => (
-                  <div key={skill.name} className={`group relative ${(catIndex === 1 && index === 3) || (catIndex === 2 && index === 6) ? "col-start-2" : ""}`}>
-                    <motion.div className="grayscale-[30%] opacity-80 group-hover:grayscale-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300" whileHover={{ scale: 1.2, transition: { duration: 0.2 } }}>
-                      <Icon icon={skill.icon} className={`text-4xl ${skill.name === "GitHub" ? "text-white" : ""}`} />
+                  <div key={skill.name} className="group relative">
+                    <motion.div 
+                      className="grayscale-[40%] opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" 
+                      whileHover={{ scale: 1.15 }}
+                    >
+                      <Icon icon={skill.icon} className={`text-3xl ${skill.name === "GitHub" ? "text-white" : ""}`} />
                     </motion.div>
-                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all duration-300 origin-bottom pointer-events-none z-50">
-                      <div className="bg-white text-black text-[10px] font-black px-2 py-1 rounded-sm uppercase tracking-tighter whitespace-nowrap shadow-xl">
+                    
+                    {/* Tooltip */}
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-all duration-200 origin-bottom pointer-events-none z-50">
+                      <div className="bg-fuchsia-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow-lg whitespace-nowrap">
                         {skill.name}
                       </div>
                     </div>
@@ -132,26 +140,25 @@ const Skills = () => {
 
         {/* --- WORKFLOW SECTION --- */}
         <div className="w-full relative z-10">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="h-[1px] w-10 bg-fuchsia-500" />
-            <span className="text-fuchsia-500 font-mono text-[10px] tracking-[0.3em] uppercase font-bold">Workflow</span>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-[1px] w-8 bg-fuchsia-500/50" />
+            <span className="text-fuchsia-500 font-mono text-[9px] tracking-[0.3em] uppercase font-bold">Workflow</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {workflowSteps.map((step, index) => (
               <motion.div
                 key={index}
                 variants={cardVariants}
-                className="relative p-6 rounded-2xl bg-black/60 backdrop-blur-3xl border border-white/10 hover:border-fuchsia-500/40 transition-all duration-500 group overflow-hidden"
+                className="relative p-5 rounded-xl bg-black/40 backdrop-blur-xl border border-white/5 hover:border-fuchsia-500/30 transition-all duration-300 group overflow-hidden"
               >
-                <div className="mb-4 text-fuchsia-500 group-hover:scale-110 transition-transform duration-300 origin-left">
-                  <Icon icon={step.icon} className="text-4xl" />
+                <div className="mb-3 text-fuchsia-500/80 group-hover:text-fuchsia-400 transition-colors duration-300">
+                  <Icon icon={step.icon} className="text-3xl" />
                 </div>
-                <h4 className="text-white font-bold text-xl mb-2 tracking-tight">{step.title}</h4>
-                <p className="text-gray-300 text-sm leading-relaxed font-medium">{step.description}</p>
+                <h4 className="text-white font-bold text-lg mb-1 tracking-tight">{step.title}</h4>
+                <p className="text-gray-400 text-xs leading-relaxed">{step.description}</p>
                 
-                {/* Visual Accent */}
-                <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-fuchsia-500 group-hover:w-full transition-all duration-700" />
+                <div className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-fuchsia-500 group-hover:w-full transition-all duration-500" />
               </motion.div>
             ))}
           </div>
