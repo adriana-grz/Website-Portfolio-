@@ -64,7 +64,7 @@ const MainPage: React.FC = () => {
         
         <div className="relative w-full lg:w-1/2 h-[50vh] lg:h-screen z-30 pointer-events-none">
           <Suspense fallback={null}>
-            <div className="w-full h-full flex items-center justify-center lg:justify-end">
+            <div className="w-full h-full flex items-center pl-75">
                <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]} />
             </div>
           </Suspense>

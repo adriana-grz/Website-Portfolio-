@@ -18,7 +18,6 @@ import * as THREE from 'three';
 // Register MeshLine elements for R3F
 extend({ MeshLineGeometry, MeshLineMaterial });
 
-// Asset paths matching your public folder structure
 const CARD_GLB_PATH = '/assets/lanyard/card.glb';
 const LANYARD_TEXTURE_PATH = '/assets/lanyard/lanyard.png';
 
@@ -45,11 +44,17 @@ export default function Lanyard({
   }, []);
 
   return (
-    <div className="relative z-0 w-full h-screen flex justify-center items-center">
+    /* 
+       FIX: Changed z-0 to z-50 and added absolute inset-0.
+       Added pointer-events-none to the wrapper so background buttons remain clickable.
+    */
+    <div className="absolute inset-0 z-50 pointer-events-none flex justify-center items-center">
       <Canvas
         camera={{ position, fov }}
         dpr={[1, isMobile ? 1.5 : 2]}
         gl={{ alpha: transparent }}
+        /* FIX: Re-enable pointer events on the Canvas so the card can be dragged */
+        style={{ pointerEvents: 'auto' }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
         <ambientLight intensity={Math.PI} />
@@ -90,7 +95,6 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
   const rot = new THREE.Vector3();
   const dir = new THREE.Vector3();
 
-  // Load assets using the public paths
   const { nodes, materials } = useGLTF(CARD_GLB_PATH) as any;
   const texture = useTexture(LANYARD_TEXTURE_PATH);
 
@@ -201,6 +205,9 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
                 clearcoatRoughness={0.15}
                 roughness={0.9}
                 metalness={0.8}
+                /* FIX: Added depthTest false and transparent true to ensure card renders on top */
+                depthTest={false}
+                transparent={true}
               />
             </mesh>
             <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
@@ -209,7 +216,6 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
         </RigidBody>
       </group>
       
-      {/* @ts-ignore - MeshLineGeometry and MeshLineMaterial are registered with extend() */}
       <mesh ref={band}>
         <meshLineGeometry />
         <meshLineMaterial
