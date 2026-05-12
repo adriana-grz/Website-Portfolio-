@@ -124,11 +124,8 @@ export default function Hero() {
           </motion.a>
           
           <motion.a 
-            href="#contacts"
-            onClick={(e) => handleScroll(e, 'contacts')}
-            className="px-6 py-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-lg text-white font-bold text-xs uppercase tracking-wider hover:bg-white/10 transition-all hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer"
           >
-            Get in touch
+          
           </motion.a>
         </motion.div>
       </motion.div>

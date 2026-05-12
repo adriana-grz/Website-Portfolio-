@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export const tabs = ["About", "Skills", "Projects", "Contacts"] as const;
+export const tabs = ["About", "Skills", "Projects"] as const;
 export type Tab = (typeof tabs)[number];
 
 interface HeaderProps {

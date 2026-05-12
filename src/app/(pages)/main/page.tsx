@@ -85,13 +85,6 @@ const MainPage: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 4: Contacts */}
-      <section id="contacts" className="relative z-20 min-h-screen py-1">
-        <div className="container mx-auto px-6">
-          <Contacts />
-        </div>
-      </section>
-
       {/* FOOTER: Placed outside of sections but with relative z-index */}
       <div className="relative z-20">
         <Footer />

@@ -34,37 +34,39 @@ const projects: Project[] = [
 
 const Projects: React.FC = () => {
   return (
-    <section className="min-h-screen text-white py-35 px-6 md:px-12 lg:px-20">
-      <div className="max-w-7xl mx-auto">
+    // Changed py-35 to pt-12 (top) and pb-24 (bottom)
+    <section id="projects" className="text-white pt-12 pb-24 px-6 md:px-12 lg:px-20">
+      {/* Changed to max-w-5xl to match the Skills component */}
+      <div className="max-w-5xl mx-auto">
         
-        {/* Header Section */}
-        <div className="mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+        {/* Header Section - Reduced mb-16 to mb-10 */}
+        <div className="mb-10 text-center md:text-left">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
             My Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-pink-200 to-pink-500">Works.</span>
           </h2>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Projects Grid - Adjusted gap for a tighter look */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
             <div 
               key={project.id} 
-              className="group bg-[#0D0D0D] border border-white/5 rounded-3xl overflow-hidden hover:border-pink-500/40 transition-all duration-500 shadow-2xl"
+              className="group bg-[#0D0D0D] border border-white/5 rounded-2xl overflow-hidden hover:border-pink-500/40 transition-all duration-500 shadow-2xl"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
                 <img 
                   src={project.thumbnail} 
                   alt={project.title}
-                  className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out"
+                  className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent opacity-90"></div>
               </div>
 
-              <div className="p-8">
-                <h3 className="text-2xl font-bold mb-3 group-hover:text-pink-400 transition-colors">
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 group-hover:text-pink-400 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-8">
+                <p className="text-gray-400 text-xs leading-relaxed mb-6 line-clamp-3">
                   {project.description}
                 </p>
 
@@ -72,14 +74,14 @@ const Projects: React.FC = () => {
                   href={project.link} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="flex items-center text-xs font-bold uppercase tracking-[0.2em] group/link"
+                  className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] group/link"
                 >
                   <span className="relative">
                     View Project
                     <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-pink-500 group-hover/link:w-full transition-all duration-300"></span>
                   </span>
                   <svg 
-                    className="w-4 h-4 ml-3 transform group-hover/link:translate-x-2 transition-transform" 
+                    className="w-3.5 h-3.5 ml-2 transform group-hover/link:translate-x-1 transition-transform" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -92,15 +94,17 @@ const Projects: React.FC = () => {
           ))}
         </div>
 
-        {/* Bottom Archive Link */}
-        <div className="mt-24 flex flex-col sm:flex-row items-center justify-between border-t border-white/10 pt-10">
-          <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest text-pink-500">Full Project Archive</h4>
-            <p className="text-gray-500 text-xs mt-2">Explore all repositories and side projects.</p>
+        {/* Bottom Archive Link - Reduced mt-24 to mt-16 */}
+        <div className="mt-16 flex flex-col sm:flex-row items-center justify-between border-t border-white/10 pt-8">
+          <div className="text-center sm:text-left">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-pink-500">Full Project Archive</h4>
+            <p className="text-gray-500 text-[10px] mt-1">Explore all repositories and side projects.</p>
           </div>
           <a 
-            href="#" 
-            className="mt-6 sm:mt-0 px-8 py-3 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all text-sm font-bold uppercase tracking-widest"
+            href="https://github.com/adriana-grz" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 sm:mt-0 px-6 py-2.5 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all text-[10px] font-bold uppercase tracking-widest"
           >
             Go to GitHub
           </a>
